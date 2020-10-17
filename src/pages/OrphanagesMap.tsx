@@ -45,16 +45,18 @@ const OrphanagesMap: React.FC = () => {
       </aside>
 
       <Map
-        center={[-23.498021,-46.8050558]}
+        center={[-23.5324406,-46.7788003]}
         zoom={15}
         style={{ width: '100%', height:'100%'}}
         >
           <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
           { orphanages.map(orphanage => {
+            console.log(orphanage.longitude, orphanage.latitude);
+            
             return (
               <Marker  key={orphanage.id}
               icon={happyMapIcon}
-              position={[orphanage.latitude, orphanage.latitude]}
+              position={[orphanage.latitude, orphanage.longitude]}
              >
                <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
                  {orphanage.name}
